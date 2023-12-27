@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--body: #efefef;
+	--gunmetal: #2d3142;
+	--khaki: #c0a98d;
+	--charcoal: #212122;
+}
+
+body {
+	background-color: var(--body);
+	color: #1a1a1a;
+}
+
+footer {
+	margin-top: auto;
+}
+
+/*  ====================
+	NAVIGATION
+	==================== */
+.no-scroll {
+	overflow: hidden;
+}
+
+.nav-toggle path {
+	fill: none;
+	transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+	stroke: var(--khaki);
+	stroke-width: 5.5;
+	stroke-linecap: round;
+}
+
+.nav-toggle path.top {
+	stroke-dasharray: 40 82;
+}
+
+.nav-toggle path.middle {
+	stroke-dasharray: 40 111;
+}
+
+.nav-toggle path.bottom {
+	stroke-dasharray: 40 161;
+}
+
+.nav-toggle.active path.top {
+	stroke-dasharray: 17 82;
+	stroke-dashoffset: -62px;
+}
+
+.nav-toggle.active path.middle {
+	stroke-dashoffset: 23px;
+}
+
+.nav-toggle.active path.bottom {
+	stroke-dashoffset: -83px;
+}
+
+@media not all and (min-width: 1024px) {
+	#navlinks-underline {
+		display: none !important;
+	}
+}
+
+@layer components {
+	.page-navbar-offset {
+		@apply mt-32;
+	}
+
+	.section-spacing {
+		@apply mb-28;
+	}
+
+	.container {
+		@apply mx-auto px-5;
+	}
+
+	.card {
+		@apply bg-white shadow-md rounded p-8;
+	}
+
+	.page-title {
+		@apply text-center;
+	}
+
+	.font-cinzel {
+		@apply tracking-wide;
+	}
+
+	/*  ====================
+		NAVIGATION
+		==================== */
+	.nav-link {
+		@apply opacity-80 hover:opacity-100 cursor-pointer transition-all lg:px-2.5;
+	}
+
+	.nav-link.active {
+		@apply opacity-100;
+	}
+
+	.dropdown-link {
+		@apply flex items-center gap-2 hover:bg-black/5 whitespace-nowrap rounded-md cursor-pointer transition-all p-2;
+	}
+
+	.footer-link {
+		@apply relative flex items-center w-fit opacity-80 hover:text-khaki hover:opacity-100 transition-all;
+	}
+
+	.footer-link::after {
+		content: "";
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+		width: 0;
+		height: 1px;
+		background-color: var(--khaki);
+		transition: width 0.3s ease;
+	}
+
+	.footer-link:hover::after,
+	.footer-link:focus::after {
+		@apply w-full;
+	}
+
+	/*  ====================
+		FORMS
+		==================== */
+	#contact-form .form-input {
+		@apply relative flex flex-col rounded-md;
+	}
+
+	#contact-form .form-input label {
+		@apply relative font-cinzel mb-1;
+	}
+
+	#contact-form .form-input input,
+	#contact-form .form-input textarea {
+		@apply bg-neutral-300/40 rounded-md focus:outline-khaki px-4 py-2;
+	}
+
+	#contact-form .form-input textarea {
+		@apply h-60 resize-none;
+	}
+
+	.form-input span.error-span {
+		@apply text-red-700 mt-1;
+	}
+	/*  ====================
+
+		BUTTONS
+		==================== */
+	.button {
+		@apply block transition-all px-10 py-2.5;
+	}
+
+	.button-khaki {
+		@apply bg-khaki border border-khaki text-white hover:brightness-105 transition-all;
+	}
+
+	.button-khaki-outlined {
+		@apply bg-transparent border border-khaki text-white hover:bg-khaki hover:brightness-105 transition-all;
+	}
+
+	.button-gunmetal {
+		@apply bg-gunmetal border border-gunmetal text-white hover:brightness-125 transition-all;
+	}
+
+	.button-gunmetal-outlined {
+		@apply bg-transparent border border-gunmetal text-white hover:bg-gunmetal hover:brightness-105 transition-all;
+	}
+
+	.button-charcoal {
+		@apply bg-charcoal border border-charcoal text-white hover:brightness-125 transition-all;
+	}
+}
+
+@layer base {
+	h1 {
+		@apply font-cinzel text-4xl;
+	}
+
+	h2 {
+		@apply font-cinzel text-3xl;
+	}
+
+	h3 {
+		@apply font-cinzel text-lg;
+	}
+
+	p,
+	span {
+		@apply text-sm xl:text-base;
+	}
+}
